@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  profiles:
+    default: cloud
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres}
+    username: ${DB_USERNAME:postgres.vgccgkpbsuqsdwnydpuu}
+    password: ${DB_PASSWORD:Cuong250806@}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  ai:
+    vectorstore:
+      pgvector:
+        table-name: ${PGVECTOR_TABLE_NAME:vector_store}
+        distance-type: COSINE_DISTANCE
+        initialize-schema: ${PGVECTOR_INITIALIZE_SCHEMA:false}
+
+langfuse:
+  public-key: ${LANGFUSE_PUBLIC_KEY}
+  secret-key: ${LANGFUSE_SECRET_KEY}
+  host: ${LANGFUSE_HOST:http://localhost:3000}
+
+mcp:
+  antigravity:
+    enabled: ${MCP_ANTIGRAVITY_ENABLED:false}
+    endpoint: ${MCP_ANTIGRAVITY_ENDPOINT:}
+    token: ${MCP_ANTIGRAVITY_TOKEN:}
